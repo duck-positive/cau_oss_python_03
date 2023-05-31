@@ -11,70 +11,62 @@ setter와 getter로 값 변경 가능. 기본값은 0
 """
 class line :
     """
-    class line : 길이에 대한 변수 __length를 가지고 있으며, 
-    aetter와 getter로 값 변경 가능. 기본값은 0
+    class line : 길이에 대한 변수 __width와  __height를 가지고 있으며, 
+    외부에서는 접근이 불가능 하며 setter와 getter로 값에 접근 가능. 기본값은 0
     """
-    __length = 0
-    def __init__(self, initial_value = 0):
-        """생성자, __length의 길이를 입력받을 수 있다.
+    __width = 0
+    __height = 0
+    def __init__(self, width, height):
+        """생성자, 가로 길이를 나타내는 width와 세로 길이를 나타내는 height를 입력받을 수 있다.
         Args:
-            initial_value : 길이 입력값, 기본값 0
-        Returns:
-            
-        Examples:
-            >>> line = figure.line(10) # __length를 10으로 해서 인스턴스화한다
+            width (int or float) : 초기 선의 가로 길이
+            height (int or float) : 초기 선의 세로 길이    
         """
-        self.__length = initial_value
+        self.__width = width
+        self.__height = height
 
-    def set_length(self, length) :
-        """setter, __length의 길이를 설정할 수 있다.
+    def set_length(self, width, height) :
+        """setter, 선의 길이를 수정할 수 있다
         Args:
-            length : 설정할 길이
-        Returns:
-            
-        Examples:
-            >>> line.set_length(10) # line의 __length를 10으로 설정한다
+            width (int or float) : 수정할 선의 가로 길이
+            height (int or float) : 수정할 선의 세로 길이 
         """
-        self.__length = length
+        self.__width = width
+        self.__height = height
 
     def get_length(self) :
-        """getter, __length의 길이를 반환받는다.
-        Args:
-            
+        """getter, 객체가 저장하고 있는 선의 길이를 반환받는다.
         Returns:
-            __length : 설정된 길이
-        Examples:
-            >>> line.get_length() # line의 __length를 반환받는다
+            (int or float) : 선의 가로 길이
+            (int or float) : 선의 세로 길이 
         """
-        return self.__length
+        return self.__width, self.__height
 
-def area_square(length) :
-    """길이를 입력받아 정사각형의 넓이를 반환한다
+def area_rectangle(width, height) :
+    """길이를 입력받아 직사각형의 넓이를 반환하는 함수
         Args:
-            length : 계산할 길이
+            width (int or float) : 직사각형의 가로 길이
+            height (int or float) : 직사각형의 세로 길이 
         Returns:
-            length*length : 입력받은 길이를 한 변으로 하는 정사각형의 넓이
-        Examples:
-            >>> area_square(10) # 10*10 의 결과 100을 반환받는다
+            width*height (int or float) : 입력받은 가로와 세로의 곱
     """
-    return length*length
-def area_circle(length) :
-    """길이를 입력받아 원의 넓이를 반환한다
+    return width*height
+
+def area_ellipse(width, height) :
+    """길이를 입력받아 타원의 넓이를 반환하는 함수
         Args:
-            length : 계산할 길이
+            width (int or float) : 짧은 쪽의 반지름 길이
+            height (int or float) : 긴 쪽의 반지름 길이 
         Returns:
-            length*length*π : 입력받은 길이를 반지름으로 하는 원의 넓이
-        Examples:
-            >>> area_circle(10) # 10*10*π 의 결과 314.1...을 반환받는다
+            width*height*π (int or float) : 타원의 넓이
     """
-    return length*length*math.pi
-def area_regular_triangle(length) :
-    """길이를 입력받아 정삼각형의 넓이를 반환한다
+    return width*height*math.pi
+def area_right_triangle(width, height) :
+    """길이를 입력받아 직각삼각형의 넓이를 반환한다
         Args:
-            length : 계산할 길이
+            width (int or float) : 밑변의 길이
+            height (int or float) : 높이의 길이 
         Returns:
-            (math.sqrt(3)/4)*length*length : 입력받은 길이를 한 변으로 하는 정삼각형의 넓이
-        Examples:
-            >>> area_circle(10) # (math.sqrt(3)/4)*10*10 의 결과 43.3...을 반환받는다
+            width*height/2 (int or float) : 직각삼각형의 넓이
     """
-    return (math.sqrt(3)/4)*length*length
+    return width*height/2
